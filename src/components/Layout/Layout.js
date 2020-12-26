@@ -21,7 +21,7 @@ class Layout extends Component {
         //This type of set state update is used when we use the current state for update
         //(i.e) this.setState({showSideDrawer: !this.state.showSideDrawer })
         this.setState((prevState) => {
-            return {showSideDrawer: prevState.showSideDrawer}
+            return {showSideDrawer: !prevState.showSideDrawer}
         });
     }
 
