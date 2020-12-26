@@ -1,17 +1,41 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import Toolbar from '../Navigation/Toolbar/Toolbar';
 import Auxilary from '../../hoc/Auxilary';
+import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
 
 import classes from './Layout.css'
 
-const layout = (props) => (
-    <Auxilary>
-        <Toolbar />
-        <main className={classes.Content}>
-            {props.children}
-        </main>
-    </Auxilary>    
-);
+class Layout extends Component {
 
-export default layout
+    state = {
+        showSideDrawer: false
+    };
+
+    sideDrawerClosingHandler = () => {
+        this.setState({showSideDrawer: false});
+    }
+
+    sideDrawerOpenHandler = () => {
+
+        //This type of set state update is used when we use the current state for update
+        //(i.e) this.setState({showSideDrawer: !this.state.showSideDrawer })
+        this.setState((prevState) => {
+            return {showSideDrawer: prevState.showSideDrawer}
+        });
+    }
+
+    render(){
+        return(
+            <Auxilary>
+                <Toolbar sideDrawerOpenHandler={this.sideDrawerOpenHandler}/>
+                <SideDrawer show={this.state.showSideDrawer} sideDrawerCloseHandler={this.sideDrawerClosingHandler} />
+                <main className={classes.Content}>
+                    {this.props.children}
+                </main>
+            </Auxilary>    
+        );
+    }
+}
+
+export default Layout;
