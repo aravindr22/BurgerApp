@@ -10,6 +10,7 @@
     margin-bottom: 8px;
 }
 
+
 .inputElement{
     outline: none;
     border: 1px solid #ccc;
@@ -23,4 +24,9 @@
 .inputElement:focus{
     outline: none;
     background-color: #ccc;
+}
+
+.Invalid{
+    border: 1px solid red;
+    background-color: rgb(250, 181, 174);
 }
