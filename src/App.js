@@ -5,6 +5,8 @@ import Layout from './hoc/Layout/Layout';
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder'
 import Checkout from './containers/Checkout/Checkout';
 import Orders from './containers/Orders/Orders';
+import Auth from './containers/Auth/auth';
+import Logout from './containers/Auth/logout/logout';
 
 class App extends Component {
   
@@ -12,9 +14,11 @@ class App extends Component {
     return (
       <div>
         <Layout>
-          <Switch>     
+          <Switch>   
             <Route path="/Checkout" component={Checkout} />        
             <Route path="/orders" component={Orders} />        
+            <Route path="/auth" component={Auth} />
+            <Route path="/logout" component={Logout} />
             <Route path="/" exact component={BurgerBuilder} />
           </Switch>
         </Layout>

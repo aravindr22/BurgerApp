@@ -1,4 +1,5 @@
- import React, {Component} from 'react';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import Auxilary from '../Auxilary/Auxilary';
@@ -28,8 +29,13 @@ class Layout extends Component {
     render(){
         return(
             <Auxilary>
-                <Toolbar sideDrawerOpenHandler={this.sideDrawerOpenHandler}/>
-                <SideDrawer show={this.state.showSideDrawer} sideDrawerCloseHandler={this.sideDrawerClosingHandler} />
+                <Toolbar 
+                    isAuth={this.props.isAuthenticated}
+                    sideDrawerOpenHandler={this.sideDrawerOpenHandler}/>
+                <SideDrawer 
+                    isAuth={this.props.isAuthenticated}
+                    show={this.state.showSideDrawer} 
+                    sideDrawerCloseHandler={this.sideDrawerClosingHandler} />
                 <main className={classes.Content}>
                     {this.props.children}
                 </main>
@@ -38,4 +44,10 @@ class Layout extends Component {
     }
 }
 
-export default Layout;
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.auth.token !== null
+    };
+};
+
+export default connect(mapStateToProps, null)(Layout);
