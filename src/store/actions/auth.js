@@ -53,8 +53,7 @@ export const auth = (email, password, isSignUp) => {
             url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + process.env.REACT_APP_FIREBASE_BURGER_APP_API_KEY;
         }
         axios.post(url, authData)
-            .then(response => {
-                console.log(response);
+            .then(response => {                
                 const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
                 localStorage.setItem('token', response.data.idToken);
                 localStorage.setItem('expirationDate', expirationDate);
