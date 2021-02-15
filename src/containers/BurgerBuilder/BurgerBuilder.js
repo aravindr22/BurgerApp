@@ -12,7 +12,7 @@ import Auxilary from '../../hoc/Auxilary/Auxilary';
 import withErrorHanlder from '../../hoc/withErrorHandler/withErrorHandler';
 import axios from '../../axios-order';
 
-class BurgerBuilder extends Component {
+export class BurgerBuilder extends Component {
     state = {
         purchasable: false,
         purchasing: false,
